@@ -5,9 +5,11 @@ Project Description:
 Library Management System API using Spring Boot. The system allows library staff to manage books, patrons, and borrowing records.
 
 Entities:
-● Book: Includes attributes like ID, title, author, publication year, ISBN, etc.
-● Patron: Contains details like ID, name, gender, and contact information(Email, and Phone No).
-● Borrowing Record: Holds information about each borrowed book and the patron who is borrowing that book, and includes borrowing and return dates of that book.
+   1. Book: Includes attributes like ID, title, author, publication year, ISBN, etc.
+
+   2. Patron: Contains details like ID, name, gender, and contact information(Email, and Phone No).
+   
+   3. Borrowing Record: Holds information about each borrowed book and the patron who is borrowing that book, and includes borrowing and return dates of that book.
 
 
 ● API Endpoints:
