@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.library.api.beans.Book;
-import com.library.api.dao.BookRepository;
+import com.library.api.daos.BookRepository;
 
 import jakarta.transaction.Transactional;
 

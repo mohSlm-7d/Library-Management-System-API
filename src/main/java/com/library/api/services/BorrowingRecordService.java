@@ -18,7 +18,7 @@ import com.library.api.beans.Book;
 import com.library.api.beans.BorrowingRecord;
 import com.library.api.beans.BorrowingRecordId;
 import com.library.api.beans.Patron;
-import com.library.api.dao.BorrowingRecordRepository;
+import com.library.api.daos.BorrowingRecordRepository;
 
 import ch.qos.logback.core.Context;
 import jakarta.transaction.Transactional;

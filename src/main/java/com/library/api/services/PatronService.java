@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.library.api.beans.Patron;
-import com.library.api.dao.PatronRepository;
+import com.library.api.daos.PatronRepository;
 
 import jakarta.transaction.Transactional;
 

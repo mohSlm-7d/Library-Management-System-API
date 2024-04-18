@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.library.api.beans.Book;
-import com.library.api.dao.BookRepository;
+import com.library.api.daos.BookRepository;
 import com.library.api.services.BookService;
 
 @RestController
