@@ -1,4 +1,4 @@
-package com.library.api.service;
+package com.library.api.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.library.api.bean.Patron;
+import com.library.api.beans.Patron;
 import com.library.api.dao.PatronRepository;
 
 import jakarta.transaction.Transactional;

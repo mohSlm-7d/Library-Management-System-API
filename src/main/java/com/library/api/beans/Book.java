@@ -1,4 +1,4 @@
-package com.library.api.bean;
+package com.library.api.beans;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

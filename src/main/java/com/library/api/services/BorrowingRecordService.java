@@ -1,4 +1,4 @@
-package com.library.api.service;
+package com.library.api.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,10 +14,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import com.library.api.bean.Book;
-import com.library.api.bean.BorrowingRecord;
-import com.library.api.bean.BorrowingRecordId;
-import com.library.api.bean.Patron;
+import com.library.api.beans.Book;
+import com.library.api.beans.BorrowingRecord;
+import com.library.api.beans.BorrowingRecordId;
+import com.library.api.beans.Patron;
 import com.library.api.dao.BorrowingRecordRepository;
 
 import ch.qos.logback.core.Context;

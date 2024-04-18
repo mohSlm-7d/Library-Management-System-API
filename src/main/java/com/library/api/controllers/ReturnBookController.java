@@ -1,43 +1,35 @@
-package com.library.api.controller;
+package com.library.api.controllers;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
-import org.apache.tomcat.util.json.JSONParser;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.library.api.bean.Book;
-import com.library.api.bean.BorrowingRecord;
-import com.library.api.bean.Patron;
-import com.library.api.service.BookService;
-import com.library.api.service.BorrowingRecordService;
-import com.library.api.service.PatronService;
+import com.library.api.beans.Book;
+import com.library.api.beans.BorrowingRecord;
+import com.library.api.beans.Patron;
+import com.library.api.services.BorrowingRecordService;
 
 @RestController
-@RequestMapping("/api/borrow")
-public class BorrowBookController {
+@RequestMapping("/api/return/")
+public class ReturnBookController {
 	@Autowired
 	private BorrowingRecordService borrowingRecordService;
+	
 	@Autowired
 	private ApplicationContext context;
 	
-//	● POST /api/borrow/{bookId}/patron/{patronId}: Allow a patron to
-//	borrow a book.
-	@PostMapping("/{bookId}/patron/{patronId}")
-	public ResponseEntity<Object> borrowBook(@PathVariable("bookId") int bookId, @PathVariable("patronId") int patronId, @RequestBody() String jsonBody) {
+//	● PUT /api/return/{bookId}/patron/{patronId}: Record the return of a borrowed book by a patron.
+	@PutMapping("/{bookId}/patron/{patronId}")
+	public ResponseEntity<Object> returnBorrowedBook(@PathVariable("bookId") int bookId, @PathVariable("patronId") int patronId, @RequestBody() String jsonBody) {
 		try {
 			JSONObject recordObj = new JSONObject(jsonBody);
 			
@@ -55,7 +47,7 @@ public class BorrowBookController {
 			
 			
 			if(recordObj.get("borrowingDate").equals(null)) {
-				newBorrowingRecord.setBorrowingDate(LocalDate.now());
+				newBorrowingRecord.setBorrowingDate(null);
 			}
 			else{
 				newBorrowingRecord.setBorrowingDate(LocalDate.parse(recordObj.get("borrowingDate").toString()));
@@ -70,13 +62,12 @@ public class BorrowBookController {
 				newBorrowingRecord.setReturnDate(LocalDate.parse(recordObj.get("returnDate").toString()));
 			}
 			
-			
-			Optional<BorrowingRecord> addedRecordToReturn = this.borrowingRecordService.borrowBook(newBorrowingRecord);
+			Optional<BorrowingRecord> addedRecordToReturn = this.borrowingRecordService.returnBook(newBorrowingRecord);
 			if(addedRecordToReturn.equals(null)) {
 				throw new Exception("internal server error");
 			}
 			if(addedRecordToReturn.isEmpty()) {
-				return ResponseEntity.badRequest().body("The borrowing record already exists (This patron already borrowed this book)!");
+				return ResponseEntity.badRequest().body("The borrowing record details are incorrect or the book return date is invalid (book return date cannot be in the past)!");
 			}
 			
 			return ResponseEntity.ok(addedRecordToReturn);
@@ -85,16 +76,4 @@ public class BorrowBookController {
 			return ResponseEntity.internalServerError().body(e);
 		}
 	}
-	
-	
-//	@GetMapping
-//	public ResponseEntity<Object> getAllRecords(){
-//		try{
-//			return ResponseEntity.ok(this.borrowingRecordService.getAllRecords());
-////			return ResponseEntity.ok(new BorrowingRecord());
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//			return ResponseEntity.internalServerError().body(e);
-//		}
-//	}
 }

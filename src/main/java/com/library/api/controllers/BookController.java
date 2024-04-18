@@ -1,4 +1,4 @@
-package com.library.api.controller;
+package com.library.api.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.library.api.beans.Book;
 import com.library.api.dao.BookRepository;
-import com.library.api.service.BookService;
-import com.library.api.bean.Book;
+import com.library.api.services.BookService;
 
 @RestController
 @RequestMapping("/api/books")

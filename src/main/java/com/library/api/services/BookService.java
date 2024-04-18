@@ -1,4 +1,4 @@
-package com.library.api.service;
+package com.library.api.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.library.api.bean.Book;
+import com.library.api.beans.Book;
 import com.library.api.dao.BookRepository;
 
 import jakarta.transaction.Transactional;
