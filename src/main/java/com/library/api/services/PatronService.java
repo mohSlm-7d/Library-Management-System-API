@@ -7,14 +7,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.library.api.beans.Patron;
 import com.library.api.daos.PatronRepository;
 
 import jakarta.transaction.Transactional;
 
-@Component
+// Generic Component type
+//@Component
+
+// Singelton is the default scope
 //@Scope(value = "singelton")
+
+
+// Component type (bean definition alternative) specialized as a 
+// Service (encapsulates business logic)
+@Service
 @Transactional
 public class PatronService {
 	@Autowired

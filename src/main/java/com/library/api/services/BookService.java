@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +21,16 @@ import com.library.api.daos.BookRepository;
 
 import jakarta.transaction.Transactional;
 
-@Component
+// Generic Component type
+//@Component
+
+// Singelton is the default scope
 //@Scope(value = "singleton")
+
+
+// Component type (bean definition alternative) specialized as a 
+// Service (encapsulates business logic)
+@Service
 @Transactional
 public class BookService {
 	@Autowired

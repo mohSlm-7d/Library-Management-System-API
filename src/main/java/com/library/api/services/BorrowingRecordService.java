@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.library.api.beans.Book;
 import com.library.api.beans.BorrowingRecord;
@@ -23,8 +24,16 @@ import com.library.api.daos.BorrowingRecordRepository;
 import ch.qos.logback.core.Context;
 import jakarta.transaction.Transactional;
 
-@Component
+// Generic Component type
+//@Component
+
+// Singelton is the default scope
 //@Scope(value = "singleton")
+
+
+// Component type (bean definition alternative) specialized as a 
+// Service (encapsulates business logic)
+@Service
 @Transactional
 public class BorrowingRecordService {
 	@Autowired
